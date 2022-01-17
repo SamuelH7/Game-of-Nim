@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Game_of_Nim
 {
@@ -6,9 +10,14 @@ namespace Game_of_Nim
     {
         static void Main(string[] args)
         {
+            int value;
+            int Total;
+
             Console.WriteLine("Enter max size of piles");
             string temp = Console.ReadLine();
             int Max = int.Parse(temp);
+
+            Total = Max;
 
             var Pile1 =  new Pile(Max);
             Max -= Pile1.amount;
@@ -18,7 +27,23 @@ namespace Game_of_Nim
 
             var Pile3 = new Pile(Max, false);
 
-            Console.WriteLine(Pile1.amount + "/" + Pile2.amount + "/" + Pile3.amount + "/" + Pile1.amount);
+            List<int> Piles = new List<int>();
+
+            Piles.Add(Pile1.amount);
+            Piles.Add(Pile2.amount);
+            Piles.Add(Pile3.amount);
+
+            var Player1 = new Player();
+            var Player2 = new Player();
+
+            while (Player1.getStones + Player2.getStones <= Total)
+            {
+                Player1.playerRandom(Piles);
+                Player2.playerLow(Piles);
+            }
+
+
+            Console.WriteLine(Player1.getStones + "/" + Player2.getStones);
         }
     }
 }
