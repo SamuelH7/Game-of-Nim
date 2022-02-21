@@ -6,7 +6,7 @@ namespace Game_of_Nim
 {
     public class Piles
     {
-        public int amount;
+        private int amount;
 
         private List<int> piles = new List<int>();
 
@@ -17,7 +17,7 @@ namespace Game_of_Nim
         public void removePile(int Index) { piles.RemoveAt(Index); }
         public List<int> getPiles() { return piles; }
 
-        Random ran = new Random();
+        private Random ran = new Random();
 
         public Piles(int MaxValue, int Piles)
         {

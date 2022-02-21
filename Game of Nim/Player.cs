@@ -8,7 +8,7 @@ namespace Game_of_Nim
 {
     public abstract class Player
     {
-        int winner;
+        private int winner;
 
         private int Stones;
 

@@ -10,13 +10,14 @@ namespace Game_of_Nim
     {
         static void Main(string[] args)
         {
+            List<int> winner = new List<int>();
+
+            int Temp;
+
             List<Player> players = new List<Player>();
 
-            Player Player1 = new playerRandom();
-            Player Player2 = new playerLow();
-
-            players.Add(Player1);
-            players.Add(Player2);
+            players.Add(new playerRandom());
+            players.Add(new playerLow());
 
             for (int i = 0; i < 100; i++)
             {
@@ -40,7 +41,16 @@ namespace Game_of_Nim
                     }
                 }
             }
-            if (Player1.getWinner > Player2.getWinner)
+            foreach (Player p in players)
+            {
+                winner.Add(p.getWinner);
+            }
+
+            Temp = winner.IndexOf(winner.Max());
+
+            Console.WriteLine("Player {0} won with {1} wins", players[Temp], players[Temp].getWinner);
+
+            /*if (Player1.getWinner > Player2.getWinner)
             {
                 Console.WriteLine("Player 1 won with {0} wins", Player1.getWinner);
             }
@@ -51,7 +61,7 @@ namespace Game_of_Nim
             else
             {
                 Console.WriteLine("It was even");
-            }
+            }*/
         }
     }
 }
